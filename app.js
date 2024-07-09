@@ -9,7 +9,9 @@ const { promisify } = require('util')
 const tourRouter = require('./routers/tourRouter')
 const redisRouter = require('./routers/redisRouter')
 const userRouter = require('./routers/userRouter')
+const userRouter = require('./routers/userRouter')
 const reviewRouter = require('./routers/reviewRouter')
+const testRouter = require('./routers/testRouter')
 const corsConfig = {
     origin: "*",
     optionSuccessStatus: 200
@@ -25,6 +27,7 @@ app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/redis', redisRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/reviews', reviewRouter)
+app.use('/api/v1/tests', testRouter)
 app.use('/api/v1/download/:filename/:type?', async (req, res) => {
     if (req.params.type == 'zip') {
         const source = createReadStream(req.params.filename, 'utf-8')
